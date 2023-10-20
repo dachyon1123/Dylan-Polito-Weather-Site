@@ -11,10 +11,63 @@
   <title>Weather Site</title>
 </head>
 <body>
+  <div class="main-div w-screen h-screen">
+    <div class="flex flex-row bg-violet-500 items-center w-full h-1/4 basis-1/4" id="nav-bar">
+      <div class="weather-icon w-1/4 h-3/4">
+        <img src="./assets/images/weather-symbol-8-svgrepo-com.svg" alt="clouds" class="h-full w-full">
+      </div>
+      <div class="search-bar flex items-center justify-center h-1/6 w-1/5 basis-3/4 gap-5">
+        <label for="search">Search</label>
+        <input type="search" name="search" id="search" class="h-full p-2.5">
+      </div>
+    </div>
+
+    <div class="content h-3/4 flex">
+
+      <div class="search-history bg-violet-300 h-full w-full basis-1/4 flex justify-center">
+        <h1 class="mt-5 text-3xl">History</h1>
+      </div>
+
+      <div class="weather-forecast bg-violet-400 h-full w-full basis-3/4 flex items-center flex-col">
+        <h1 class="mt-10 text-3xl">Forecast</h1>
+        <div class="flex flex-row gap-1 p-2 weather h-1/4 w-3/4 bg-white mt-48">
+          <div class="w-1/6 h-full bg-red-100">
+
+          </div>
+
+          <div class="w-1/6 h-full bg-red-100">
+
+          </div>
+
+          <div class="w-1/6 h-full bg-red-100">
+
+          </div>
+
+          <div class="w-1/6 h-full bg-red-100">
+
+          </div>
+
+          <div class="w-1/6 h-full bg-red-100">
+
+          </div>
+
+          <div class="w-1/6 h-full bg-red-100">
+
+          </div>
+          
+          <div class="w-1/6 h-full bg-red-100">
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
   
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+  
 
 
 
