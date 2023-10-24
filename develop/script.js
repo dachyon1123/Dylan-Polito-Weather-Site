@@ -6,9 +6,19 @@ function renderWeather(weather) {
   
 }
 
+function renderCityGeo (geocode) {
+  console.log(geocode)
+  console.log(geocode[0].lat)
+  console.log(geocode[0].lon)
+}
 
+function geocodeCity(city) {
+  let url = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=ded887f09c87ed8a14484e02ddb5d99e"
 
-
+  fetch(url)
+  .then(response => response.json())
+  .then(data => renderCityGeo(data))
+}
 
 
 function fetchWeather(city) {
@@ -27,7 +37,7 @@ $('#search-button').on('click', (event) => {
   event.preventDefault();
   let cityLocation = $('#default-search').val();
   
-
+  geocodeCity(cityLocation)
   fetchWeather(cityLocation);
 
   let cityHistory = $('.search-history');
