@@ -36,15 +36,14 @@ function handleFiveDayWeather(date) {
     weatherCard.append(dayPlusOne)
 
     for (let j = 0; j<listOfDates.length; ++j) {
-      // console.log(listOfDates[j].dt_txt)
       if (currentDayTime == listOfDates[j].dt_txt) {
-        console.log(listOfDates[j].dt_txt)
         let dailyWeather = $('<p>');
-        dailyWeather.text(listOfDates[j].weather[0].description)
+        let dailyWeatherText = listOfDates[j].weather[0].description.toUpperCase();
+        dailyWeather.text(dailyWeatherText)
         weatherCard.append(dailyWeather)
 
         let dailyTemp = $('<p>');
-        dailyTemp.text(listOfDates[j].main.temp)
+        dailyTemp.text(`Temp: ${listOfDates[j].main.temp}`)
         weatherCard.append(dailyTemp)
 
       }
@@ -66,13 +65,25 @@ function geocodeCity(city) {
   
 }
 
+let cityHistoryArray = [];
 
 function renderCityHistory(cityLocation) {
-  let cityHistory = $('.search-history');
-
+  let cityHistory = $('.search-history-content');
+  
+  cityHistoryArray.push(cityLocation)
+  
   let cityHistoryText = $('<h3>')
+  localStorage.setItem('cityHistoryStorage', JSON.stringify(cityHistoryArray))
   cityHistoryText.text(cityLocation)
 
+  let savedArray = localStorage.getItem('cityHistoryStorage')
+  console.log(savedArray)
+
+  for (let i = 0; i < 10; ++i){
+    savedArray.forEach((city)) => {
+
+    }
+  }
   let cityHistoryCard = $('<div>')
   cityHistoryCard.addClass('cityCard flex justify-center items-center bg-slate-200/[0.3] rounded-lg w-3/4 h-10')
   cityHistory.append(cityHistoryCard)
