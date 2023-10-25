@@ -1,3 +1,13 @@
+$(function() {
+  let currentDay = dayjs().format('YYYY-MM-DD');
+  let showCurrentDay = $('<h1>');
+  showCurrentDay.text(currentDay)
+  let forecastSection = $('.forecast-section');
+
+  forecastSection.append(showCurrentDay)
+})
+
+
 function fetchWeather(geocode) {
   let lat = geocode[0].lat
   let lon = geocode[0].lon
@@ -7,11 +17,39 @@ function fetchWeather(geocode) {
 
   fetch(url)
   .then(response => response.json())
-  .then(data => console.log(data))
+  .then(data => handleFiveDayWeather(data))
 }
 
-function handleFiveDayWeather() {
+function handleFiveDayWeather(date) {
+  let currentDay = dayjs()
+  let listOfDates = date.list
+  let weatherForecast = $('.weather')
+  console.log(listOfDates)
   
+  
+  for (let i = 0; i < 5; ++i) {
+    let weatherCard = $(`.card-${i}`)
+    weatherCard.text('')
+
+    let dayPlusOne = currentDay.add(i + 1, 'day').format('YYYY-MM-DD')
+    let currentDayTime = `${dayPlusOne} 00:00:00`
+    weatherCard.append(dayPlusOne)
+
+    for (let j = 0; j<listOfDates.length; ++j) {
+      // console.log(listOfDates[j].dt_txt)
+      if (currentDayTime == listOfDates[j].dt_txt) {
+        console.log(listOfDates[j].dt_txt)
+        let dailyWeather = $('<p>');
+        dailyWeather.text(listOfDates[j].weather[0].description)
+        weatherCard.append(dailyWeather)
+
+        let dailyTemp = $('<p>');
+        dailyTemp.text(listOfDates[j].main.temp)
+        weatherCard.append(dailyTemp)
+
+      }
+    }
+  } 
 }
 
 

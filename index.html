@@ -8,6 +8,8 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+
   <title>Weather Site</title>
 </head>
 <body class="bg-gray-800">
@@ -43,25 +45,28 @@
       </div>
 
       <div class="weather-forecast bg-violet-400 basis-3/4 flex items-center flex-col rounded-lg mt-2">
-        <h1 class="mt-10 text-3xl">Forecast</h1>
-        <div class="flex flex-row gap-1 p-2 weather h-1/3 w-3/4 bg-white mt-48">
-          <div class="card-1 w-1/5 h-full bg-red-100">
-            <p class="card-1-text"></p>
-          </div>
-
-          <div class="w-1/5 h-full bg-red-100">
-
-          </div>
-
-          <div class="w-1/5 h-full bg-red-100">
+        <div class="forecast-section text-3xl flex flex-col justify-center items-center">
+          <h1 class="forecast mt-10 text-3xl">Forecast</h1>
+        </div>
+        
+        <div class="weather flex flex-row gap-1 p-2 h-1/3 w-3/4 bg-violet-400 mt-48 rounded-2xl">
+          <div class="card-0 w-1/5 h-full bg-indigo-50 border-8 border-slate-950 rounded-2xl flex flex-col items-center justify-center gap-10">
 
           </div>
 
-          <div class="w-1/5 h-full bg-red-100">
+          <div class="card-1 w-1/5 h-full bg-indigo-50 border-8 border-slate-950 rounded-2xl flex flex-col items-center justify-center gap-10">
 
           </div>
 
-          <div class="w-1/5 h-full bg-red-100">
+          <div class="card-2 w-1/5 h-full bg-indigo-50 border-8 border-slate-950 rounded-2xl flex flex-col items-center justify-center gap-10">
+
+          </div>
+
+          <div class="card-3 w-1/5 h-full bg-indigo-50 border-8 border-slate-950 rounded-2xl flex flex-col items-center justify-center gap-10">
+            
+          </div>
+
+          <div class="card-4 w-1/5 h-full bg-indigo-50 border-8 border-slate-950 rounded-2xl flex flex-col items-center justify-center gap-10">
 
           </div>
         </div>
