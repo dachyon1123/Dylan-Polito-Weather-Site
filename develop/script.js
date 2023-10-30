@@ -38,14 +38,29 @@ function handleFiveDayWeather(date) {
     for (let j = 0; j<listOfDates.length; ++j) {
       if (currentDayTime == listOfDates[j].dt_txt) {
         let dailyWeather = $('<p>');
-        let dailyWeatherText = listOfDates[j].weather[0].description.toUpperCase();
-        dailyWeather.text(dailyWeatherText)
+        let dailyWeatherText = listOfDates[j].wind.speed;
+        dailyWeather.text(`Wind Speed: ${dailyWeatherText}`)
         weatherCard.append(dailyWeather)
 
         let dailyTemp = $('<p>');
-        dailyTemp.text(`Temp: ${listOfDates[j].main.temp}`)
+        let kelvin = listOfDates[j].main.temp
+        let fahrenheit = (kelvin - 273.15) * 9/5 + 32;
+        dailyTemp.text(`${fahrenheit.toFixed(2)} F`)
         weatherCard.append(dailyTemp)
 
+        let humidity = $('<p>');
+        humidity.text(`Humidity ${listOfDates[j].main.humidity}`)
+        weatherCard.append(humidity)
+
+        let currentWeather = listOfDates[j].weather[0].main
+        let currentWeatherIcon = listOfDates[j].weather[0].icon
+        let weatherSymbol = $('<img>');
+        let image = "http://openweathermap.org/img/w/" + currentWeatherIcon + ".png";
+        
+        
+         weatherSymbol.attr('src', image)
+         weatherCard.append(weatherSymbol)
+      
       }
     }
   } 
@@ -76,14 +91,6 @@ function renderCityHistory(cityLocation) {
   localStorage.setItem('cityHistoryStorage', JSON.stringify(cityHistoryArray))
   cityHistoryText.text(cityLocation)
 
-  let savedArray = localStorage.getItem('cityHistoryStorage')
-  console.log(savedArray)
-
-  for (let i = 0; i < 10; ++i){
-    savedArray.forEach((city)) => {
-
-    }
-  }
   let cityHistoryCard = $('<div>')
   cityHistoryCard.addClass('cityCard flex justify-center items-center bg-slate-200/[0.3] rounded-lg w-3/4 h-10')
   cityHistory.append(cityHistoryCard)
